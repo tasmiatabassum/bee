@@ -12,7 +12,6 @@
     <style>
         body {
             font-family: 'Jost', sans-serif;
-            /* Use Jost font */
             background-color: #f0f0f0;
             color: #333;
             margin: 0;
@@ -25,7 +24,6 @@
             position: relative;
         }
 
-        /* Timer styles */
         .timer-box {
             font-size: 20px;
             color: #333;
@@ -34,15 +32,13 @@
             background-color: rgba(255, 255, 255, 0.8);
             position: absolute;
             top: 10px;
-            /* Move timer to the top */
             z-index: 10;
             border-radius: 20px;
-            box-shadow:
-                0 4px 10px rgba(0, 0, 0, 0.1),
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1),
                 0 0 20px rgba(120, 115, 245, 0.5),
-                /* Gradient shadow */
                 0 0 30px rgba(255, 110, 196, 0.4);
         }
+
         .playlist-links {
             position: absolute;
             bottom: 10px;
@@ -54,10 +50,8 @@
             border-radius: 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1),
                 0 0 20px rgba(120, 115, 245, 0.5),
-                /* Gradient shadow */
                 0 0 30px rgba(255, 110, 196, 0.4);
         }
-
 
         .playlist-links a {
             text-decoration: none;
@@ -72,12 +66,12 @@
             color: #7873f5;
         }
 
-
         .message-box {
             font-size: 24px;
             color: #333;
             min-height: 50px;
         }
+
         .typed-text {
             border-right: 2px solid #333;
             white-space: nowrap;
@@ -129,6 +123,7 @@
                 transform: translate(0, 0) scale(1);
             }
         }
+
         .grain {
             position: absolute;
             top: 0;
@@ -140,7 +135,6 @@
             animation: grainMove 1s steps(10) infinite;
             z-index: 5;
         }
-
 
         @keyframes grainMove {
             0% {
@@ -159,9 +153,12 @@
         <source src="static/joji.mp3" type="audio/mpeg">
         Your browser does not support the audio tag.
     </audio>
+
     <!-- Gradient Blobs -->
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
+
+    <!-- Grain effect -->
     <div class="grain"></div>
 
     <!-- Timer box at the very top -->
@@ -174,12 +171,13 @@
             <span id="typed-message" class="typed-text"></span>
         </div>
     </div>
+
+    <!-- Playlist links at the bottom -->
     <div class="playlist-links">
-        <a href="https://open.spotify.com/playlist/1H9pnWTGDAWpUtPr8xvz7p?si=c600a69671284665&pt=824d23a26e96cd44883c69ca9e94376c"
-            target="_blank">full circle</a>
-        <a href="https://open.spotify.com/playlist/5P3f6LDLtiV1JdHyi5D6qI?si=001e7a6111ba448d&pt=9e69f1a04752f79a20124df8ac834e43"
-            target="_blank">pov: im in love with you</a>
-        <a href="https://www.pinterest.com/ttasmiatabassum/a-year-with-you/" target="_blank">a year with you</a>
+        <a href="{{ spotify_links[0]['url'] }}" target="_self">{{ spotify_links[0]['name'] }}</a>
+        <a href="{{ spotify_links[1]['url'] }}" target="_blank">{{ spotify_links[1]['name'] }}</a>
+        <a href="{{ spotify_links[2]['url'] }}" target="_blank">{{ spotify_links[2]['name'] }}</a>
+        <a href="{{ pinterest_link }}" target="_blank">a year with you</a>
     </div>
 
     <script>
@@ -191,17 +189,16 @@
             "everyday i wake up and thank the universe for sending you to me.",
             "im so grateful to have you here, with me.",
             "and im more grateful that i get to be with you, watch you grow and shine ✨",
-            "i know i can be a lot at times" , "mostly unreasonable and selfish :((", "but thank you so much for being the absolute best and putting up with my madness <33",
+            "i know i can be a lot at times, mostly unreasonable and selfish :(", "but thank you so much for being the absolute best and putting up with my madness",
             "i know love exists because you exist <33",
-            "can't wait to stare at you and not say a word <3 because i'm all words no game hehe ✨",
-            "i hope i light up your world like you do mine <33", "im sorry for being difficult sometimes :((", "i love you with all my heart and being", "like seriously, it hurts", 
-            "i love you, if i didn't say that already <33"];
+            "can't wait to look at you and not say a word <3 beacuse i'm all words no game hehe ✨"];
         let messageBox = document.getElementById('typed-message');
         let index = 0;
         let charIndex = 0;
         let isDeleting = false;
         let typingSpeed = 110; // Speed of typing
 
+        // Function to show each character like typing
         function typeMessage() {
             const currentMessage = messages[index];
 
@@ -210,29 +207,31 @@
                 if (charIndex < 0) {
                     isDeleting = false;
                     index = (index + 1) % messages.length;
-                    setTimeout(typeMessage, 500);
+                    setTimeout(typeMessage, 500); // Small pause before typing the next message
                 } else {
-                    setTimeout(typeMessage, typingSpeed / 3);
+                    setTimeout(typeMessage, typingSpeed / 3); // Speed up deleting
                 }
             } else {
                 messageBox.textContent = currentMessage.substring(0, charIndex++);
                 if (charIndex === currentMessage.length) {
                     isDeleting = true;
-                    setTimeout(typeMessage, 3000);
+                    setTimeout(typeMessage, 3000); // Pause before starting to delete
                 } else {
                     setTimeout(typeMessage, typingSpeed);
                 }
             }
         }
 
+        // Start the typing effect after page load
         setTimeout(() => {
             typeMessage();
         }, 1000);
 
+        // Timer function to calculate time from the anniversary date
         function updateTimer() {
             const startDate = new Date("October 7, 2023 16:30:00 GMT+06:00");  // Bangladesh time zone
             const now = new Date();
-            const diff = now - startDate; 
+            const diff = now - startDate;  // Difference in milliseconds
 
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
