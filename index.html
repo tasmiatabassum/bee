@@ -154,14 +154,11 @@
         Your browser does not support the audio tag.
     </audio>
 
-    <!-- Gradient Blobs -->
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
 
-    <!-- Grain effect -->
     <div class="grain"></div>
 
-    <!-- Timer box at the very top -->
     <div class="timer-box" id="timer">
         crazy that we've been together for: <span id="time-together"></span>
     </div>
@@ -172,7 +169,6 @@
         </div>
     </div>
 
-    <!-- Playlist links at the bottom -->
    <div class="playlist-links">
             <a href="full.html">words</a>
             <a href="https://open.spotify.com/playlist/1H9pnWTGDAWpUtPr8xvz7p?si=971cd074b1304671&pt=2a5cc8ec43b1ff6f6829812761f44d50"
@@ -187,13 +183,13 @@
         audio.volume = 0.1;
 
         // Define messages directly for GitHub Pages deployment
-        let messages = ["goofmorning baby 💗",
+        let messages = ["goofmorning baby 💗 ",
             "everyday i wake up and thank the universe for sending you to me.",
             "im so grateful to have you here, with me.",
-            "and im more grateful that i get to be with you, watch you grow and shine ✨",
-            "i know i can be a lot at times, mostly unreasonable and selfish :(", "but thank you so much for being the absolute best and putting up with my madness",
-            "i know love exists because you exist <33",
-            "can't wait to look at you and not say a word <3 beacuse i'm all words no game hehe ✨"];
+            "and im more grateful that i get to be with you, watch you grow and shine ✨ ",
+            "i know i can be a lot at times, mostly unreasonable and selfish :(", "but thank you so much for being the absolute best and putting up with my madness ",
+            "i know love exists because you exist <33 ",
+            "can't wait to look at you and not say a word <3 beacuse i'm all words no game hehe ✨ "];
         let messageBox = document.getElementById('typed-message');
         let index = 0;
         let charIndex = 0;
@@ -224,12 +220,10 @@
             }
         }
 
-        // Start the typing effect after page load
         setTimeout(() => {
             typeMessage();
         }, 1000);
 
-        // Timer function to calculate time from the anniversary date
         function updateTimer() {
             const startDate = new Date("October 7, 2023 16:30:00 GMT+06:00");  // Bangladesh time zone
             const now = new Date();
