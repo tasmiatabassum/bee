@@ -179,11 +179,12 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('play-button').addEventListener('click', function() {
-                const audio = document.getElementById('background-music');
-                audio.play();
-                this.style.display = 'none'; // Hide the button after play
+        const audio = document.getElementById('background-music');
+        audio.volume = 0.1;  // Adjust the volume if needed
+
+        window.addEventListener('load', function() {
+            audio.play().catch(error => {
+                console.log('Autoplay was prevented: ', error);
             });
         });
         
