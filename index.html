@@ -191,49 +191,56 @@ playButton.addEventListener('click', function() {
         console.log('Playback failed: ', error);
     });
     playButton.style.display = 'none';  // Hide the button after playing
+    startTextAnimation();  // Start the text animation
 });
-        
-        let messages = ["goofmorning baby 💗 ",
-            "everyday i wake up and thank the universe for sending you to me.",
-            "im so grateful to have you here, with me.",
-            "and im more grateful that i get to be with you, watch you grow and shine ✨ ",
-            "i know i can be a lot at times, mostly unreasonable and selfish :(", "but thank you so much for being the absolute best and putting up with my madness ",
-            "i know love exists because you exist <33 ",
-            "can't wait to look at you and not say a word <3 because i'm all words no game hehe ✨ "];
-        let messageBox = document.getElementById('typed-message');
-        let index = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typingSpeed = 110; // Speed of typing
 
-        // Function to show each character like typing
-        function typeMessage() {
-            const currentMessage = messages[index];
+let messages = [
+    "goofmorning baby 💗",
+    "everyday i wake up and thank the universe for sending you to me.",
+    "im so grateful to have you here, with me.",
+    "and im more grateful that i get to be with you, watch you grow and shine ✨",
+    "i know i can be a lot at times, mostly unreasonable and selfish :(",
+    "but thank you so much for being the absolute best and putting up with my madness",
+    "i know love exists because you exist <33",
+    "can't wait to look at you and not say a word <3 because i'm all words no game hehe ✨"
+];
 
-            if (isDeleting) {
-                messageBox.textContent = currentMessage.substring(0, charIndex--);
-                if (charIndex < 0) {
-                    isDeleting = false;
-                    index = (index + 1) % messages.length;
-                    setTimeout(typeMessage, 500); // Small pause before typing the next message
-                } else {
-                    setTimeout(typeMessage, typingSpeed / 3); // Speed up deleting
-                }
-            } else {
-                messageBox.textContent = currentMessage.substring(0, charIndex++);
-                if (charIndex === currentMessage.length) {
-                    isDeleting = true;
-                    setTimeout(typeMessage, 3000); // Pause before starting to delete
-                } else {
-                    setTimeout(typeMessage, typingSpeed);
-                }
-            }
+let messageBox = document.getElementById('typed-message');
+let index = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typingSpeed = 110; // Speed of typing
+
+// Function to start the text animation
+function startTextAnimation() {
+    setTimeout(() => {
+        typeMessage();
+    }, 1000);
+}
+
+
+function typeMessage() {
+    const currentMessage = messages[index];
+
+    if (isDeleting) {
+        messageBox.textContent = currentMessage.substring(0, charIndex--);
+        if (charIndex < 0) {
+            isDeleting = false;
+            index = (index + 1) % messages.length;
+            setTimeout(typeMessage, 500); // Small pause before typing the next message
+        } else {
+            setTimeout(typeMessage, typingSpeed / 3); // Speed up deleting
         }
-
-        setTimeout(() => {
-            typeMessage();
-        }, 1000);
-
+    } else {
+        messageBox.textContent = currentMessage.substring(0, charIndex++);
+        if (charIndex === currentMessage.length) {
+            isDeleting = true;
+            setTimeout(typeMessage, 3000); // Pause before starting to delete
+        } else {
+            setTimeout(typeMessage, typingSpeed);
+        }
+    }
+}
         function updateTimer() {
             const startDate = new Date("October 7, 2023 16:30:00 GMT+06:00");  // Bangladesh time zone
             const now = new Date();
