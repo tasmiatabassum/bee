@@ -149,10 +149,13 @@
 </head>
 
 <body>
-    <audio id="background-music" autoplay loop>
-        <source src="static/joji.mp3" type="audio/mpeg">
-        Your browser does not support the audio tag.
-    </audio>
+    <audio id="background-music" loop>
+    <source src="static/joji.mp3" type="audio/mpeg">
+    Your browser does not support the audio tag.
+</audio>
+
+<button id="play-button">play</button>
+    
 
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
@@ -180,13 +183,15 @@
 
     <script>
         const audio = document.getElementById('background-music');
-        audio.volume = 0.1;  // Adjust the volume if needed
+const playButton = document.getElementById('play-button');
 
-        window.addEventListener('load', function() {
-            audio.play().catch(error => {
-                console.log('Autoplay was prevented: ', error);
-            });
-        });
+playButton.addEventListener('click', function() {
+    audio.volume = 0.1;  // Adjust the volume if needed
+    audio.play().catch(error => {
+        console.log('Playback failed: ', error);
+    });
+    playButton.style.display = 'none';  // Hide the button after playing
+});
         
         let messages = ["goofmorning baby 💗 ",
             "everyday i wake up and thank the universe for sending you to me.",
