@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>words</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='bee.ico') }}" type="image/x-icon">
+
+    <style>
+        body {
+            font-family: 'Jost', sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Gradient Blobs */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6ec4, #7873f5);
+            animation: blobMove 3s infinite;
+            opacity: 0.7;
+            filter: blur(100px);
+        }
+
+        .blob-1 {
+            width: 400px;
+            height: 400px;
+            top: 10%;
+            left: 5%;
+        }
+
+        .blob-2 {
+            width: 300px;
+            height: 300px;
+            bottom: 10%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        @keyframes blobMove {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                transform: translate(100px, -50px) scale(1.1);
+            }
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+        }
+
+        .grain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 100 100"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="4" stitchTiles="stitch"></feTurbulence><feDisplacementMap in="SourceGraphic" scale="15"></feDisplacementMap></filter><rect width="100" height="100" filter="url(#noiseFilter)" opacity="0.4"/></svg>');
+            animation: grainMove 1s steps(10) infinite;
+            z-index: 5;
+        }
+
+        @keyframes grainMove {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(-100px, -100px);
+            }
+        }
+
+        /* Paragraph content */
+        .content-box {
+            padding: 20px;
+            
+            max-width: 1500px;
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        .content-box p {
+            font-size: 20px;
+            color: #333;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Gradient Blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="grain"></div>
+
+    <!-- Content box with paragraph -->
+    <div class="content-box">
+        <p>the playlist, "full circle," reminds me of the journey we've been on together. i hope
+            it brings you as much joy as it does to me.<br>it's truly crazy how it's been a year, wow. if i were to describe it in a word, i would say it was -surreal.<br> surreal how you came into my life.
+            <br> surreal how god sent you to me when i needed you the most, even though i had no idea i even needed anyone.<br>surreal how you just became a part of my life, just like that. <br> surreal how it just makes sense, you know?
+            <br>if anything ever made sense to me, it's you. i don't know what life would be without you, and it's crazy how im feeling like this when it's only been a year (scary). 
+            <br>with love comes fear, and im scared of how much i love you and scared of how much i need you. scared of how life might become without you. 
+            <br>i can't wrap my head around the idea of us, you, and how important you are to me. you bring colors to my boring ass life, you make me feel good, you make me feel hopeful and most importantly you make me feel loved and cared for. i don't know how a person as loving as you likes a person like me :(( 
+                but you make me want to be better for you, because you're worth it. you make the world make sense in a way i didn't think was possible. and i hate how i can't do the same for you. i hate how i can't be there when you feel bad, or when you've had a hard day, or when i've done something wrong and i can't make it up to you. 
+                i didn't know missing someone so much was possible, it hurts and i try to reason with myself because there's no one else i'd be in this pain for. you make me the happiest and i hope i bring even a fraction of that joy to you.<br> i love you so much (more than you'll ever know, more than i'll ever be able to comprehend) and yes, i would date you if you were a girl <33
+    </p>
+    </div>
+
+</body>
+
+</html>
