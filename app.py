@@ -20,9 +20,10 @@ def home():
         "everyday i wake up and thank the universe for sending you to me.",
         "im so grateful to have you here, with me.",
         "and im more grateful that i get to be with you, watch you grow and shine ✨",
-        "i know i can be a lot at times, mostly unreasonable and selfish :(", "but thank you so much for being the absolute best and putting up with my madness",
+        "i know i can be a lot at times" , "mostly unreasonable and selfish :((", "but thank you so much for being the absolute best and putting up with my madness",
         "i know love exists because you exist <33",
-        "can't wait to look at you and not say a word <3 beacuse i'm all words no game hehe ✨"
+        "can't wait to look at you and not say a word <3 beacuse i'm all words no game hehe ✨",
+        "i hope i light up your day like you do mine <33"
     ]
     
 
