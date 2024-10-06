@@ -22,9 +22,7 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            /* Ensure blobs stay within the viewport */
             position: relative;
-            /* For grain effect to be placed over the body */
         }
 
         /* Timer styles */
@@ -39,16 +37,12 @@
             /* Move timer to the top */
             z-index: 10;
             border-radius: 20px;
-            /* Same border radius as playlist links */
             box-shadow:
                 0 4px 10px rgba(0, 0, 0, 0.1),
                 0 0 20px rgba(120, 115, 245, 0.5),
                 /* Gradient shadow */
                 0 0 30px rgba(255, 110, 196, 0.4);
-            /* Gradient shadow */
         }
-
-        /* Playlist links section */
         .playlist-links {
             position: absolute;
             bottom: 10px;
@@ -62,7 +56,6 @@
                 0 0 20px rgba(120, 115, 245, 0.5),
                 /* Gradient shadow */
                 0 0 30px rgba(255, 110, 196, 0.4);
-            /* Gradient shadow */
         }
 
 
@@ -84,10 +77,7 @@
             font-size: 24px;
             color: #333;
             min-height: 50px;
-            /* Reserve space for typing effect */
         }
-
-        /* Typing effect */
         .typed-text {
             border-right: 2px solid #333;
             white-space: nowrap;
@@ -102,7 +92,6 @@
             }
         }
 
-        /* Gradient Blobs */
         .blob {
             position: absolute;
             border-radius: 50%;
@@ -140,8 +129,6 @@
                 transform: translate(0, 0) scale(1);
             }
         }
-
-        /* Grain effect */
         .grain {
             position: absolute;
             top: 0;
@@ -175,8 +162,6 @@
     <!-- Gradient Blobs -->
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
-
-    <!-- Grain effect -->
     <div class="grain"></div>
 
     <!-- Timer box at the very top -->
@@ -189,8 +174,6 @@
             <span id="typed-message" class="typed-text"></span>
         </div>
     </div>
-
-    <!-- Playlist links at the bottom -->
     <div class="playlist-links">
         <a href="https://open.spotify.com/playlist/1H9pnWTGDAWpUtPr8xvz7p?si=c600a69671284665&pt=824d23a26e96cd44883c69ca9e94376c"
             target="_blank">full circle</a>
@@ -208,16 +191,16 @@
             "everyday i wake up and thank the universe for sending you to me.",
             "im so grateful to have you here, with me.",
             "and im more grateful that i get to be with you, watch you grow and shine ✨",
-            "i know i can be a lot at times, mostly unreasonable and selfish :(", "but thank you so much for being the absolute best and putting up with my madness",
+            "i know i can be a lot at times" , "mostly unreasonable and selfish :((", "but thank you so much for being the absolute best and putting up with my madness",
             "i know love exists because you exist <33",
-            "can't wait to look at you and not say a word <3 beacuse i'm all words no game hehe ✨"];
+            "can't wait to look at you and not say a word <3 beacuse i'm all words no game hehe ✨",
+            "i hope i light up your day like you do mine <33"];
         let messageBox = document.getElementById('typed-message');
         let index = 0;
         let charIndex = 0;
         let isDeleting = false;
         let typingSpeed = 110; // Speed of typing
 
-        // Function to show each character like typing
         function typeMessage() {
             const currentMessage = messages[index];
 
@@ -226,43 +209,38 @@
                 if (charIndex < 0) {
                     isDeleting = false;
                     index = (index + 1) % messages.length;
-                    setTimeout(typeMessage, 500); // Small pause before typing the next message
+                    setTimeout(typeMessage, 500);
                 } else {
-                    setTimeout(typeMessage, typingSpeed / 3); // Speed up deleting
+                    setTimeout(typeMessage, typingSpeed / 3);
                 }
             } else {
                 messageBox.textContent = currentMessage.substring(0, charIndex++);
                 if (charIndex === currentMessage.length) {
                     isDeleting = true;
-                    setTimeout(typeMessage, 3000); // Pause before starting to delete
+                    setTimeout(typeMessage, 3000);
                 } else {
                     setTimeout(typeMessage, typingSpeed);
                 }
             }
         }
 
-        // Start the typing effect after page load
         setTimeout(() => {
             typeMessage();
         }, 1000);
 
-        // Timer function to calculate time from the anniversary date
         function updateTimer() {
             const startDate = new Date("October 7, 2023 16:30:00 GMT+06:00");  // Bangladesh time zone
             const now = new Date();
-            const diff = now - startDate;  // Difference in milliseconds
+            const diff = now - startDate; 
 
-            // Time calculations
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-            // Display the result
             document.getElementById("time-together").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
         }
 
-        // Update the timer every second
         setInterval(updateTimer, 1000);
     </script>
 </body>
