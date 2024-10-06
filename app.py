@@ -28,7 +28,7 @@ def home():
     
 
     spotify_links = [
-        {"name": "words", "url": url_for('full_circle')},
+        {"name": "words", "url": url_for('words')},
         {"name": "pov: im in love with you", "url": "https://open.spotify.com/playlist/5P3f6LDLtiV1JdHyi5D6qI?si=2efb90e312154955&pt=65792102ea70da88d5103239375651b1"}, 
         {"name": "full circle", "url": "https://open.spotify.com/playlist/1H9pnWTGDAWpUtPr8xvz7p?si=0b914e86a8b54897&pt=bd0e761c5c3ab6f22d0966252787de0f"} 
     ]
@@ -36,7 +36,7 @@ def home():
 
     return render_template('index.html', days_together=days_together,hours_together=hours_together, minutes_together=minutes_together , messages=messages, spotify_links=spotify_links, pinterest_link=pinterest_link)
 @app.route('/words')
-def full_circle():
+def words():
     return render_template('full.html')
 
 if __name__ == '__main__':
